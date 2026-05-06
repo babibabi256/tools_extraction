@@ -1,0 +1,17 @@
+[INFO] 2026-05-05 00:20:01 ============================================================
+[INFO] 2026-05-05 00:20:01 mobile_extractor start  project=regression
+[INFO] 2026-05-05 00:20:01 ============================================================
+[INFO] 2026-05-05 00:20:01 入力ファイル: /tmp/with_isdeleted.csv
+[INFO] 2026-05-05 00:20:01 [INFO] 入力件数: 4
+[INFO] 2026-05-05 00:20:01 raw 保存: /sessions/bold-cool-rubin/mnt/tools/mobile_extractor/output/raw/raw.csv
+[INFO] 2026-05-05 00:20:01 cleaned 保存: /sessions/bold-cool-rubin/mnt/tools/mobile_extractor/output/cleaned/cleaned.csv
+[INFO] 2026-05-05 00:20:01 [INFO] 欠損除去件数: 0（理由: tel_missing）
+[INFO] 2026-05-05 00:20:01 [INFO] 不正除去件数: 0（理由: tel_invalid）
+[INFO] 2026-05-05 00:20:01 [INFO] 非携帯除去件数: 2（理由: not_mobile）
+[INFO] 2026-05-05 00:20:01 [INFO] tel_type 内訳: {'mobile': 2, 'landline_or_other': 1, 'ip_phone': 1}
+[INFO] 2026-05-05 00:20:01 [INFO] フィルタ後件数: 1
+[INFO] 2026-05-05 00:20:01 filtered 保存: /sessions/bold-cool-rubin/mnt/tools/mobile_extractor/output/filtered/filtered.csv
+[INFO] 2026-05-05 00:20:01 [INFO] 最終出力件数: 1
+[INFO] 2026-05-05 00:20:01 export 保存: /sessions/bold-cool-rubin/mnt/tools/mobile_extractor/output/export/20260505_regression_export.csv
+[INFO] 2026-05-05 00:20:01 export 保存: /sessions/bold-cool-rubin/mnt/tools/mobile_extractor/output/export/final.csv
+[INFO] 2026-05-05 00:20:01 mobile_extractor done.

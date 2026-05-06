@@ -1,0 +1,35 @@
+{
+  "name": "HPあり抽出",
+  "description": "HP列にURLらしい値が入っている行だけを抽出します。",
+  "required_columns": ["HP"],
+  "derived_columns": [
+    {
+      "name": "hp_cleaned",
+      "source": "HP",
+      "transforms": ["strip"]
+    }
+  ],
+  "flag_columns": [
+    {
+      "name": "hp_exists",
+      "conditions": [
+        {"column": "hp_cleaned", "operator": "regex", "value": "^https?://.+"}
+      ]
+    }
+  ],
+  "delete_rules": [
+    {
+      "reason": "hp_missing",
+      "conditions": [
+        {"column": "hp_cleaned", "operator": "is_empty"}
+      ]
+    }
+  ],
+  "keep_rule": {
+    "unmatched_reason": "hp_invalid",
+    "conditions": [
+      {"column": "hp_exists", "operator": "equals", "value": "True"}
+    ]
+  },
+  "breakdown_columns": ["hp_exists"]
+}

@@ -1,0 +1,17 @@
+[INFO] 2026-05-05 00:19:55 ============================================================
+[INFO] 2026-05-05 00:19:55 mobile_extractor start  project=test
+[INFO] 2026-05-05 00:19:55 ============================================================
+[INFO] 2026-05-05 00:19:55 入力ファイル: input/sample.csv
+[INFO] 2026-05-05 00:19:55 [INFO] 入力件数: 11
+[INFO] 2026-05-05 00:19:55 raw 保存: /sessions/bold-cool-rubin/mnt/tools/mobile_extractor/output/raw/raw.csv
+[INFO] 2026-05-05 00:19:55 cleaned 保存: /sessions/bold-cool-rubin/mnt/tools/mobile_extractor/output/cleaned/cleaned.csv
+[INFO] 2026-05-05 00:19:55 [INFO] 欠損除去件数: 1（理由: tel_missing）
+[INFO] 2026-05-05 00:19:55 [INFO] 不正除去件数: 1（理由: tel_invalid）
+[INFO] 2026-05-05 00:19:55 [INFO] 非携帯除去件数: 5（理由: not_mobile）
+[INFO] 2026-05-05 00:19:55 [INFO] tel_type 内訳: {'mobile': 4, 'landline_or_other': 2, 'invalid': 2, 'ip_phone': 1, 'free_dial': 1, 'navi_dial': 1}
+[INFO] 2026-05-05 00:19:55 [INFO] フィルタ後件数: 4
+[INFO] 2026-05-05 00:19:55 filtered 保存: /sessions/bold-cool-rubin/mnt/tools/mobile_extractor/output/filtered/filtered.csv
+[INFO] 2026-05-05 00:19:55 [INFO] 最終出力件数: 4
+[INFO] 2026-05-05 00:19:55 export 保存: /sessions/bold-cool-rubin/mnt/tools/mobile_extractor/output/export/20260505_test_export.csv
+[INFO] 2026-05-05 00:19:55 export 保存: /sessions/bold-cool-rubin/mnt/tools/mobile_extractor/output/export/final.csv
+[INFO] 2026-05-05 00:19:55 mobile_extractor done.

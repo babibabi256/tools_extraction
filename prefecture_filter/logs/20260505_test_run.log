@@ -1,0 +1,18 @@
+[INFO] 2026-05-05 05:01:07 ============================================================
+[INFO] 2026-05-05 05:01:07 prefecture_filter start  project=test_run
+[INFO] 2026-05-05 05:01:07 ============================================================
+[INFO] 2026-05-05 05:01:07 抽出対象都道府県: ['東京都', '大阪府']
+[INFO] 2026-05-05 05:01:07 入力ファイル: input/sample.csv
+[INFO] 2026-05-05 05:01:07 [INFO] 入力件数: 11
+[INFO] 2026-05-05 05:01:07 raw 保存: /sessions/nice-quirky-johnson/mnt/tools/prefecture_filter/output/raw/raw.csv
+[INFO] 2026-05-05 05:01:07 cleaned 保存: /sessions/nice-quirky-johnson/mnt/tools/prefecture_filter/output/cleaned/cleaned.csv
+[INFO] 2026-05-05 05:01:07 [INFO] 欠損除去件数: 0（理由: pref_missing）
+[INFO] 2026-05-05 05:01:07 [INFO] 不正除去件数: 2（理由: invalid_prefecture）
+[INFO] 2026-05-05 05:01:07 [INFO] 不一致除去件数: 4（理由: pref_unmatched）
+[INFO] 2026-05-05 05:01:07 [INFO] 都道府県内訳(生存): {'東京都': 3, '大阪府': 2}
+[INFO] 2026-05-05 05:01:07 [INFO] フィルタ後件数: 5
+[INFO] 2026-05-05 05:01:07 filtered 保存: /sessions/nice-quirky-johnson/mnt/tools/prefecture_filter/output/filtered/filtered.csv
+[INFO] 2026-05-05 05:01:07 [INFO] 最終出力件数: 5
+[INFO] 2026-05-05 05:01:07 export 保存: /sessions/nice-quirky-johnson/mnt/tools/prefecture_filter/output/export/20260505_test_run_export.csv
+[INFO] 2026-05-05 05:01:07 export 保存: /sessions/nice-quirky-johnson/mnt/tools/prefecture_filter/output/export/final.csv
+[INFO] 2026-05-05 05:01:07 prefecture_filter done.

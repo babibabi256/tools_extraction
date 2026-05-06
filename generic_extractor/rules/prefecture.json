@@ -1,0 +1,42 @@
+{
+  "name": "都道府県抽出",
+  "description": "都道府県列から指定した値だけを抽出します。valuesを書き換えて対象を変更できます。",
+  "required_columns": ["都道府県"],
+  "derived_columns": [
+    {
+      "name": "pref_trimmed",
+      "source": "都道府県",
+      "transforms": ["strip"]
+    }
+  ],
+  "flag_columns": [
+    {
+      "name": "pref_matched",
+      "conditions": [
+        {"column": "pref_trimmed", "operator": "in", "values": ["東京都", "大阪府"]}
+      ]
+    }
+  ],
+  "delete_rules": [
+    {
+      "reason": "pref_missing",
+      "conditions": [
+        {"column": "pref_trimmed", "operator": "is_empty"}
+      ]
+    },
+    {
+      "reason": "invalid_prefecture",
+      "conditions": [
+        {"column": "pref_trimmed", "operator": "not_empty"},
+        {"column": "pref_trimmed", "operator": "not_valid_prefecture"}
+      ]
+    }
+  ],
+  "keep_rule": {
+    "unmatched_reason": "pref_unmatched",
+    "conditions": [
+      {"column": "pref_matched", "operator": "equals", "value": "True"}
+    ]
+  },
+  "breakdown_columns": ["pref_trimmed"]
+}

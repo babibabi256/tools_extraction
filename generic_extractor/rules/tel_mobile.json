@@ -1,0 +1,41 @@
+{
+  "name": "携帯番号抽出",
+  "description": "TEL列から 070 / 080 / 090 の携帯番号だけを抽出します。",
+  "required_columns": ["TEL"],
+  "derived_columns": [
+    {
+      "name": "tel_normalized",
+      "source": "TEL",
+      "transforms": ["nfkc", "digits_only"]
+    }
+  ],
+  "flag_columns": [
+    {
+      "name": "mobile_flag",
+      "conditions": [
+        {"column": "tel_normalized", "operator": "regex", "value": "^(?:070|080|090)[0-9]{8}$"}
+      ]
+    }
+  ],
+  "delete_rules": [
+    {
+      "reason": "tel_missing",
+      "conditions": [
+        {"column": "TEL", "operator": "is_empty"}
+      ]
+    },
+    {
+      "reason": "tel_invalid",
+      "conditions": [
+        {"column": "tel_normalized", "operator": "not_regex", "value": "^[0-9]+$"}
+      ]
+    }
+  ],
+  "keep_rule": {
+    "unmatched_reason": "not_mobile",
+    "conditions": [
+      {"column": "mobile_flag", "operator": "equals", "value": "True"}
+    ]
+  },
+  "breakdown_columns": ["mobile_flag"]
+}

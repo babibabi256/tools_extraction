@@ -1,0 +1,35 @@
+{
+  "name": "新しい抽出ルール",
+  "description": "このファイルをコピーして、条件を書き換えて使います。",
+  "required_columns": ["対象カラム名"],
+  "derived_columns": [
+    {
+      "name": "判定用カラム名",
+      "source": "対象カラム名",
+      "transforms": ["strip"]
+    }
+  ],
+  "flag_columns": [
+    {
+      "name": "matched_flag",
+      "conditions": [
+        {"column": "判定用カラム名", "operator": "not_empty"}
+      ]
+    }
+  ],
+  "delete_rules": [
+    {
+      "reason": "missing",
+      "conditions": [
+        {"column": "判定用カラム名", "operator": "is_empty"}
+      ]
+    }
+  ],
+  "keep_rule": {
+    "unmatched_reason": "unmatched",
+    "conditions": [
+      {"column": "matched_flag", "operator": "equals", "value": "True"}
+    ]
+  },
+  "breakdown_columns": ["matched_flag"]
+}

@@ -1,0 +1,157 @@
+[
+  {
+    "id": "generic_extractor",
+    "name": "汎用抽出",
+    "description": "JSONルールを選んで、TEL・都道府県・HP有無などの抽出条件を切り替えます。",
+    "cwd": "../generic_extractor",
+    "command": ["{python}", "main.py"],
+    "fields": [
+      {
+        "name": "rule",
+        "label": "抽出ルール",
+        "type": "text",
+        "default": "tel_mobile",
+        "placeholder": "tel_mobile / prefecture / hp_exists / ./rules/custom.json",
+        "help": "generic_extractor/rules/ にJSONを追加すると、ここへ名前を入れるだけで使えます。"
+      },
+      {
+        "name": "input",
+        "label": "入力CSVパス",
+        "type": "text",
+        "placeholder": "./input/sample.csv",
+        "help": "空欄の場合は input/ 配下の最新CSVを使います。"
+      },
+      {
+        "name": "project",
+        "label": "プロジェクト名",
+        "type": "text",
+        "default": "generic_extract"
+      },
+      {
+        "name": "keep_all",
+        "label": "削除行もexportへ残す",
+        "type": "checkbox",
+        "default": false
+      }
+    ],
+    "args": [
+      {"flag": "--rule", "field": "rule"},
+      {"flag": "--input", "field": "input", "skip_empty": true},
+      {"flag": "--project", "field": "project", "skip_empty": true},
+      {"flag": "--keep-all-in-export", "field": "keep_all", "type": "flag"}
+    ]
+  },
+  {
+    "id": "mobile_extractor",
+    "name": "携帯番号抽出",
+    "description": "TEL列から 070 / 080 / 090 の携帯番号だけを抽出します。",
+    "cwd": "../mobile_extractor",
+    "command": ["{python}", "main.py"],
+    "fields": [
+      {
+        "name": "input",
+        "label": "入力CSVパス",
+        "type": "text",
+        "placeholder": "./input/sample.csv",
+        "help": "空欄の場合は input/ 配下の最新CSVを使います。"
+      },
+      {
+        "name": "project",
+        "label": "プロジェクト名",
+        "type": "text",
+        "default": "mobile_extract"
+      },
+      {
+        "name": "keep_all",
+        "label": "削除行もexportへ残す",
+        "type": "checkbox",
+        "default": false
+      }
+    ],
+    "args": [
+      {"flag": "--input", "field": "input", "skip_empty": true},
+      {"flag": "--project", "field": "project", "skip_empty": true},
+      {"flag": "--keep-all-in-export", "field": "keep_all", "type": "flag"}
+    ]
+  },
+  {
+    "id": "meiyose",
+    "name": "名寄せ",
+    "description": "TEL一致または名称+住所一致で重複行を論理削除します。",
+    "cwd": "../名寄せ",
+    "command": ["{python}", "main.py"],
+    "fields": [
+      {
+        "name": "mode",
+        "label": "名寄せモード",
+        "type": "select",
+        "default": "tel",
+        "options": [
+          {"value": "tel", "label": "TEL一致"},
+          {"value": "name", "label": "名称+住所一致"}
+        ]
+      },
+      {
+        "name": "input",
+        "label": "入力CSVパス",
+        "type": "text",
+        "placeholder": "./input/sample.csv",
+        "help": "空欄の場合は input/ 配下の最新CSVを使います。"
+      },
+      {
+        "name": "project",
+        "label": "プロジェクト名",
+        "type": "text",
+        "default": "meiyose"
+      }
+    ],
+    "args": [
+      {"flag": "--mode", "field": "mode"},
+      {"flag": "--input", "field": "input", "skip_empty": true},
+      {"flag": "--project", "field": "project", "skip_empty": true}
+    ]
+  },
+  {
+    "id": "dummy_persons",
+    "name": "個人ダミーデータ生成",
+    "description": "検証用の個人ダミーデータCSVを生成します。",
+    "cwd": "../create_dummy_data/scripts",
+    "command": ["{python}", "generate_dummy_persons.py"],
+    "fields": [
+      {
+        "name": "count",
+        "label": "生成件数",
+        "type": "number",
+        "default": 10000,
+        "min": 1
+      },
+      {
+        "name": "seed",
+        "label": "乱数シード",
+        "type": "number",
+        "default": 20260503
+      },
+      {
+        "name": "dirty_ratio",
+        "label": "欠損・重複混入率",
+        "type": "number",
+        "default": 0,
+        "min": 0,
+        "max": 1,
+        "step": 0.01
+      },
+      {
+        "name": "skip_clean",
+        "label": "raw生成のみ",
+        "type": "checkbox",
+        "default": false
+      }
+    ],
+    "args": [
+      {"flag": "--count", "field": "count"},
+      {"flag": "--seed", "field": "seed"},
+      {"flag": "--dirty-ratio", "field": "dirty_ratio"},
+      {"flag": "--skip-clean", "field": "skip_clean", "type": "flag"}
+    ]
+  }
+]
